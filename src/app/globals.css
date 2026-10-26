@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #0B0B0C;
+    --surface-1: #171719;
+    --surface-2: #232326;
+    --border-subtle: #303034;
+    --text-primary: #F5F5F7;
+    --text-secondary: #A4A5AA;
+    --primary-accent: #547BFF;
+  }
+
+  * {
+    border-color: #303034;
+  }
+
+  body {
+    background-color: #0B0B0C;
+    color: #F5F5F7;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #303034;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #547BFF;
+}
+
+/* Custom glow utility */
+.glow-primary {
+  box-shadow: 0 0 24px -4px rgba(84, 123, 255, 0.4);
+}
+
+.glow-success {
+  box-shadow: 0 0 24px -4px rgba(44, 139, 102, 0.4);
+}
+
+.glow-card {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
