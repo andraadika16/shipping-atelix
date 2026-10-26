@@ -71,7 +71,7 @@ export const TrackingStepper: React.FC<TrackingStepperProps> = ({ status }) => {
                 {/* Connecting Line to next step */}
                 {index < STEPPER_STEPS.length - 1 && (
                   <div
-                    className={`absolute top-6 left-1/2 w-full h-[2px] -z-0 transition-colors duration-300 ${
+                    className={`absolute top-6 -translate-y-1/2 left-[calc(50%+24px)] w-[calc(100%-48px)] h-[2px] z-0 transition-colors duration-300 ${
                       isCompleted
                         ? isDelivered
                           ? 'bg-[#2C8B66]'
@@ -90,8 +90,8 @@ export const TrackingStepper: React.FC<TrackingStepperProps> = ({ status }) => {
                         : 'bg-[#547BFF] text-white ring-4 ring-[#547BFF]/25 shadow-[0_0_20px_rgba(84,123,255,0.4)] animate-pulse'
                       : isCompleted
                       ? isDelivered
-                        ? 'bg-[#2C8B66]/20 text-[#2C8B66] border border-[#2C8B66]/50'
-                        : 'bg-[#547BFF]/20 text-[#547BFF] border border-[#547BFF]/50'
+                        ? 'bg-[#142920] text-[#2C8B66] border border-[#2C8B66]/50 shadow-sm'
+                        : 'bg-[#18233C] text-[#547BFF] border border-[#547BFF]/50 shadow-sm'
                       : 'bg-[#232326] text-[#A4A5AA] border border-[#303034]'
                   }`}
                 >
@@ -123,7 +123,7 @@ export const TrackingStepper: React.FC<TrackingStepperProps> = ({ status }) => {
         {/* Mobile Stepper (Vertical Stack) */}
         <div className="flex md:hidden flex-col gap-4 relative pl-3">
           {/* Vertical Connecting Line */}
-          <div className="absolute top-6 bottom-6 left-7 w-[2px] bg-[#303034] -z-0" />
+          <div className="absolute top-6 bottom-6 left-[30px] -translate-x-1/2 w-[2px] bg-[#303034] z-0" />
 
           {STEPPER_STEPS.map((step) => {
             const Icon = ICON_MAP[step.iconName] || PackageCheck;
@@ -143,8 +143,8 @@ export const TrackingStepper: React.FC<TrackingStepperProps> = ({ status }) => {
                         : 'bg-[#547BFF] text-white ring-4 ring-[#547BFF]/25 animate-pulse'
                       : isCompleted
                       ? isDelivered
-                        ? 'bg-[#2C8B66]/20 text-[#2C8B66] border border-[#2C8B66]/50'
-                        : 'bg-[#547BFF]/20 text-[#547BFF] border border-[#547BFF]/50'
+                        ? 'bg-[#142920] text-[#2C8B66] border border-[#2C8B66]/50 shadow-sm'
+                        : 'bg-[#18233C] text-[#547BFF] border border-[#547BFF]/50 shadow-sm'
                       : 'bg-[#232326] text-[#A4A5AA] border border-[#303034]'
                   }`}
                 >
