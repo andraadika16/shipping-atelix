@@ -57,3 +57,56 @@
 .glow-card {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
 }
+
+/* Subtle box-shadow pulse glow for active stepper node */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(84, 123, 255, 0.4), 0 0 0 4px rgba(84, 123, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(84, 123, 255, 0.75), 0 0 0 6px rgba(84, 123, 255, 0.35);
+  }
+}
+
+@keyframes pulseGlowSuccess {
+  0%, 100% {
+    box-shadow: 0 0 14px rgba(44, 139, 102, 0.4), 0 0 0 4px rgba(44, 139, 102, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(44, 139, 102, 0.75), 0 0 0 6px rgba(44, 139, 102, 0.35);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-glow-success {
+  animation: pulseGlowSuccess 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Logistics network node pulse animation */
+@keyframes nodePulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.animate-node-pulse {
+  animation: nodePulse 3.5s ease-in-out infinite;
+}
+
+/* Accessibility: respect user prefers-reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-node-pulse,
+  .animate-pulse-glow,
+  .animate-pulse-glow-success,
+  .animate-pulse {
+    animation: none !important;
+  }
+}

@@ -3,6 +3,7 @@
 import React, { useState, FormEvent, useEffect } from 'react';
 import { Search, Loader2, ArrowRight } from 'lucide-react';
 import { APP_CONFIG, HERO_CONFIG } from '@/constants/tracking.constants';
+import { HeroBackground } from '@/components/HeroBackground';
 
 interface TrackingSearchProps {
   initialCode?: string;
@@ -25,8 +26,9 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const trimmed = inputValue.trim().toUpperCase();
-    if (trimmed && !isLoading) {
+    const trimmed = inputValue.trim().toUpperCase() || APP_CONFIG.DEMO_TRACKING_CODE;
+    if (!isLoading) {
+      setInputValue(trimmed);
       onSearch(trimmed);
     }
   };
@@ -39,26 +41,29 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({
   };
 
   return (
-    <section className="w-full py-10 sm:py-16 flex flex-col items-center text-center">
+    <section className="relative w-full py-10 sm:py-16 flex flex-col items-center text-center overflow-hidden">
+      {/* Decorative Hero Background (Glow, Grid, Logistics Network) */}
+      <HeroBackground />
+
       {/* Top Engine Badge */}
-      <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-[#171719] border border-[#303034] text-xs text-[#A4A5AA] mb-4">
+      <div className="relative z-10 inline-flex items-center px-3.5 py-1 rounded-full bg-[#171719] border border-[#303034] text-xs text-[#A4A5AA] mb-4">
         <span className="font-medium text-[#F5F5F7]">{HERO_CONFIG.BADGE}</span>
       </div>
 
       {/* Main Headline */}
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F5F5F7] max-w-3xl leading-[1.15]">
+      <h1 className="relative z-10 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F5F5F7] max-w-3xl leading-[1.15]">
         {HERO_CONFIG.TITLE}
       </h1>
 
       {/* Subtitle */}
-      <p className="mt-4 text-sm sm:text-base text-[#A4A5AA] max-w-xl mx-auto leading-relaxed">
+      <p className="relative z-10 mt-4 text-sm sm:text-base text-[#A4A5AA] max-w-xl mx-auto leading-relaxed">
         {HERO_CONFIG.SUBTITLE}
       </p>
 
       {/* Search Bar Form */}
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-2xl mt-8 sm:mt-10"
+        className="relative z-10 w-full max-w-2xl mt-8 sm:mt-10"
       >
         <div className="relative flex flex-col sm:flex-row items-center gap-2 p-1.5 rounded-2xl bg-[#171719] border border-[#303034] focus-within:border-[#547BFF] focus-within:ring-2 focus-within:ring-[#547BFF]/25 shadow-2xl transition-all duration-200">
           {/* Input with Search Icon */}
@@ -79,8 +84,8 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({
           {/* CTA Submit Button */}
           <button
             type="submit"
-            disabled={isLoading || !inputValue.trim()}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#547BFF] hover:bg-[#547BFF]/90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 text-white font-semibold text-sm transition-all duration-200 shadow-[0_4px_16px_rgba(84,123,255,0.35)] shrink-0"
+            disabled={isLoading}
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#547BFF] hover:bg-[#547BFF]/90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 text-white font-semibold text-sm transition-all duration-200 shadow-[0_4px_16px_rgba(84,123,255,0.35)] shrink-0 cursor-pointer"
           >
             {isLoading ? (
               <>
@@ -98,7 +103,7 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({
       </form>
 
       {/* Quick Sample Pills */}
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
+      <div className="relative z-10 mt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
         <span className="text-[#A4A5AA]">{HERO_CONFIG.SAMPLE_LABEL}</span>
         <button
           type="button"

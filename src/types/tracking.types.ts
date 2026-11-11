@@ -23,12 +23,21 @@ export interface TrackingEventDTO {
   source: 'ADMIN_MANUAL' | 'SYSTEM_WEBHOOK' | string;
 }
 
+export interface PackageItemDTO {
+  name: string;
+  quantity: number;
+  imageUrl?: string;
+  variant?: string;
+}
+
 export interface TrackingResponseDTO {
   trackingCode: string;
   carrier: string;
   status: TrackingStatus;
   estimatedDelivery: string | null; // ISO Date "YYYY-MM-DD" or null
   events: TrackingEventDTO[];
+  items?: PackageItemDTO[];
+  orderNumber?: string;
 }
 
 export interface TrackingErrorDTO {

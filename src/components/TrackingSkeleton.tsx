@@ -20,6 +20,31 @@ export const TrackingSkeleton: React.FC = () => {
         </div>
       </div>
 
+      {/* Package Contents Skeleton */}
+      <div className="w-full rounded-2xl border border-[#303034] bg-[#171719] p-6 sm:p-8">
+        <div className="flex items-center justify-between pb-5 border-b border-[#303034]">
+          <div className="flex items-center gap-3">
+            <div className="h-5 w-24 bg-[#232326] rounded-md" />
+            <div className="h-4 w-16 bg-[#232326] rounded-full" />
+          </div>
+          <div className="h-4 w-32 bg-[#232326] rounded-md hidden sm:block" />
+        </div>
+        <div className="flex flex-col gap-4 pt-4">
+          {[1, 2].map((i) => (
+            <div key={i} className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-lg bg-[#232326] shrink-0" />
+                <div className="flex flex-col gap-2">
+                  <div className="h-4 w-40 sm:w-60 bg-[#232326] rounded" />
+                  <div className="h-3 w-24 sm:w-36 bg-[#232326] rounded" />
+                </div>
+              </div>
+              <div className="h-4 w-8 bg-[#232326] rounded font-mono shrink-0" />
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Stepper Skeleton */}
       <div className="w-full rounded-2xl border border-[#303034] bg-[#171719] p-6 sm:p-8">
         <div className="h-5 w-48 bg-[#232326] rounded-md mb-8" />
